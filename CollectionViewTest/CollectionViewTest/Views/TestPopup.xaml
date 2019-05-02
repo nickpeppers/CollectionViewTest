@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:viewModels="clr-namespace:CollectionViewTest.ViewModels"
+    x:Class="CollectionViewTest.Views.TestPopup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center" PositionOut="Center" ScaleIn="1.2" ScaleOut="0.8" DurationIn="400" DurationOut="300" EasingIn="SinOut" EasingOut="SinIn" HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.BindingContext>
+        <viewModels:PopupViewModel/>
+    </pages:PopupPage.BindingContext>
+    <Frame Margin="20" Padding="0" BackgroundColor="White" BorderColor="Black">
+        <Grid>
+            <CarouselView x:Name="_carouselView" Margin="5" ItemsSource="{Binding Items}" ItemSizingStrategy="MeasureFirstItem">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Text="{Binding Title}" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Button Padding="10,5" Text="X" TextColor="Black" FontSize="32" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="End" Clicked="Handle_Clicked"/>
+        </Grid>
+    </Frame>
+</pages:PopupPage>
